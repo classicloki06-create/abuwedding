@@ -158,18 +158,7 @@ body {
   transition: color 0.4s ease, box-shadow 0.4s ease;
   opacity: 0; animation: fadeUp 1s ease 1.5s forwards;
   border-radius: 2px;
-  const scrollOverlay = document.getElementById('scrollOverlay');
-
-openBtn.addEventListener('click', () => {
-  setTimeout(() => {
-    scrollOverlay.classList.add('active');
-
-    setTimeout(() => {
-      scrollOverlay.classList.remove('active');
-    }, 2500);
-
-  }, 800); // delay so it comes after your opening animation
-});
+  
 }
 #openBtn::before {
   content: ''; position: absolute; inset: 0;
@@ -776,6 +765,7 @@ footer {
 </style>
 </head>
 <body>
+
 <div id="scrollOverlay">
   <div class="scroll-content">
     <p>SCROLL</p>
@@ -783,18 +773,7 @@ footer {
   </div>
 </div>
 <div class="bg-texture"></div>
-<div id="scrollHint" aria-hidden="true">
-  <div class="sh-inner">
-    <div class="sh-label">SCROLL</div>
-    <div class="sh-mouse">
-      <div class="sh-dot"></div>
-    </div>
-    <div class="sh-arrows">
-      <span class="sh-arr sh-arr1"></span>
-      <span class="sh-arr sh-arr2"></span>
-    </div>
-  </div>
-</div>
+
 
 <!-- YouTube hidden audio player -->
 <div id="ytPlayer"></div>
@@ -1466,6 +1445,21 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#'+cur);
   });
 }, { passive: true });
+
+const openBtn = document.getElementById('openBtn');
+const scrollOverlay = document.getElementById('scrollOverlay');
+
+openBtn.addEventListener('click', () => {
+  setTimeout(() => {
+    scrollOverlay.classList.add('active');
+
+    setTimeout(() => {
+      scrollOverlay.classList.remove('active');
+    }, 2500);
+
+  }, 800);
+});
+
 </script>
 </body>
 </html>
